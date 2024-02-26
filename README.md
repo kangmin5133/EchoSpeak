@@ -32,7 +32,7 @@ fastapi==0.109.2
 clone git@github.com:kangmin5133/EcoSpeak.git
 cd model
 ```
-download .pkl file from [here]([https://huggingface.co/byoussef/whisper-large-v2-Ko/resolve/main/pytorch_model.bin?download=true])
+download pytorch_model.bin file from [here](https://huggingface.co/byoussef/whisper-large-v2-Ko/resolve/main/pytorch_model.bin?download=true)
 after download, place pytorch_model.bin file to model directory
 
 
