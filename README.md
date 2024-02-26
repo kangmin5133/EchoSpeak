@@ -2,10 +2,10 @@
 > STT(✅) + LLM(not yet) + TTS engine for Korean Language
 
 
-Architechture
+## Architechture
 ![]()
 
-this project use pre trained korean model from byoussef's model [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/byoussef/whisper-large-v2-Ko)
+this project used pre trained korean model from byoussef's whisper-large-v2-ko model [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/byoussef/whisper-large-v2-Ko)
 
 
 ## version compatibility
