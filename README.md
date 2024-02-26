@@ -1,4 +1,4 @@
-# EcoSpeak🗣️
+# EchoSpeak🗣️
 > STT(✅) + LLM(not yet) + TTS engine for Korean Language
 
 
