@@ -1,9 +1,9 @@
 # EchoSpeak🗣️
 > STT(✅) + LLM(not yet) + TTS engine for Korean Language
-
+![](img/echospeak_logo.png)
 
 ## Architechture
-![](img/echospeak_logo.png)
+![]()
 
 this project used pre trained korean model from byoussef's whisper-large-v2-ko model [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/byoussef/whisper-large-v2-Ko)
 
