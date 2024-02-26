@@ -1,8 +1,11 @@
 # EcoSpeak🗣️
 > STT(✅) + LLM(not yet) + TTS engine for Korean Language
 
+
 Architechture
 ![]()
+
+this project use pre trained korean model from byoussef's model [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/wpeebles/DiT](https://huggingface.co/byoussef/whisper-large-v2-Ko)
 
 
 ## version compatibility
