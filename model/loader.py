@@ -30,8 +30,15 @@ def load_and_transform_model(model_name='large-v2'):
             .replace("layer_norm", "ln_post")
         )
 
+    if torch.backends.mps.is_available():  # Check for MacOS Metal support
+        device = torch.device('mps')
+    elif torch.cuda.is_available():  # Check for CUDA support
+        device = torch.device('cuda')
+    else:
+        device = torch.device('cpu')
+
     # Load HF Model
-    hf_state_dict = torch.load(MODEL_PATH, map_location=torch.device('cpu'))  # pytorch_model.bin file
+    hf_state_dict = torch.load(MODEL_PATH, map_location=device)  # pytorch_model.bin file
 
     # Rename layers
     for key in list(hf_state_dict.keys()):
@@ -41,8 +48,8 @@ def load_and_transform_model(model_name='large-v2'):
     # Init Whisper Model and replace model weights
     model = whisper.load_model(model_name)
     model.load_state_dict(hf_state_dict)
+    model.to(device)
 
     return model
 
-# 이 부분에서 모델을 로드하고 메모리에 올리는 작업을 수행
 model = load_and_transform_model()

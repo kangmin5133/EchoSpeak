@@ -1,2 +1,3 @@
 model/pytorch_model.bin
 test
+__pycache__

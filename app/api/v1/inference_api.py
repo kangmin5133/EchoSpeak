@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from model.loader import model  # 모델 로드
 
 router = APIRouter()
 
