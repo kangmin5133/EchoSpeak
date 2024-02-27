@@ -1,5 +1,5 @@
 # EchoSpeak🗣️
-> STT(✅) + LLM(not yet) + TTS engine for Korean Language
+> STT(✅) + LLM(not yet) + TTS REST API service for Korean Language
 ![](img/echospeak_logo.png)
 
 ## Architechture
