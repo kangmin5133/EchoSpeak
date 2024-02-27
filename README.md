@@ -14,7 +14,9 @@ python 3.10 +
 cuda(11.7) or CPU or mps(m1 or m2)
 ```
 
-It also requires the command-line tool ffmpeg to be installed on your system, which is available from most package managers:
+## installation
+
+It first requires the command-line tool ffmpeg to be installed on your system, which is available from most package managers:
 ```sh
 # on Ubuntu or Debian
 sudo apt update && sudo apt install ffmpeg
@@ -32,7 +34,6 @@ choco install ffmpeg
 scoop install ffmpeg
 ```
 
-## pytorch installation
 ### pytorch
 ```sh
 pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2
@@ -41,9 +42,6 @@ pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2
 ## requirements
 ```sh
 openai-whisper==20231117
-transformers==4.35.2
-huggingface-hub==0.20.3
-huggingface==0.0.1
 uvicorn==0.27.1
 fastapi==0.109.2
 ```
