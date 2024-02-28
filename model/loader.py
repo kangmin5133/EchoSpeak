@@ -30,9 +30,10 @@ def load_and_transform_model(model_name='large-v2'):
             .replace("layer_norm", "ln_post")
         )
 
-    if torch.backends.mps.is_available():  # Check for MacOS Metal support
-        device = torch.device('mps')
-    elif torch.cuda.is_available():  # Check for CUDA support
+    # if torch.backends.mps.is_available():  # Check for MacOS Metal support
+    #     device = torch.device('mps')
+
+    if torch.cuda.is_available():  # Check for CUDA support
         device = torch.device('cuda')
     else:
         device = torch.device('cpu')

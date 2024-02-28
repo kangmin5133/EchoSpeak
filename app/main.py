@@ -27,6 +27,6 @@ app.add_middleware(
 app.include_router(inference_router, prefix="/api/v1")
 
 # 웹소켓 경로 추가
-@app.websocket("/transcribe")
+@app.websocket("/real-time/transcribe")
 async def websocket_route(websocket: WebSocket):
     await websocket_endpoint(websocket)
