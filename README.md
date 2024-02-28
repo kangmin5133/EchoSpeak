@@ -16,7 +16,7 @@ cuda(11.7) or CPU or mps(m1 or m2)
 
 ## installation
 
-It first requires the command-line tool ffmpeg to be installed on your system, which is available from most package managers:
+It first requires the command-line tool `ffmpeg` to be installed on your system, which is available from most package managers:
 ```sh
 # on Ubuntu or Debian
 sudo apt update && sudo apt install ffmpeg
@@ -46,13 +46,13 @@ uvicorn==0.27.1
 fastapi==0.109.2
 ```
 
-## download models
+## download model
 ```sh
 clone git@github.com:kangmin5133/EcoSpeak.git
 cd model
 ```
-download pytorch_model.bin file from [here](https://huggingface.co/byoussef/whisper-large-v2-Ko/resolve/main/pytorch_model.bin?download=true)
-after download, place pytorch_model.bin file to model directory
+download `pytorch_model.bin` file from [here](https://huggingface.co/byoussef/whisper-large-v2-Ko/resolve/main/pytorch_model.bin?download=true)
+after download, place model file to `/model` directory
 
 
 # Run
