@@ -11,6 +11,13 @@ logger = logging.getLogger()
 async def get_version():
     return {"api_version":Version.echospeak_version,"whisper":Version.whisper_version}
 
+@router.get("/inference/stt/search")
+async def get_request_ids():
+    
+    result = await inference_service.get_request_ids()
+    return result
+
+
 @router.post("/inference/stt/transcribe", response_model=Dict[str, str])
 async def transcribe_audio(file: UploadFile = File(...)):
 

@@ -1,6 +1,7 @@
 from fastapi import HTTPException
 from model.loader import model
 import json
+import glob
 from pathlib import Path
 import uuid
 import whisper
@@ -48,3 +49,11 @@ async def process_audio_and_get_result(audio_content: bytes):
     if save_result == False :
         raise HTTPException(status_code=500, detail="Failed to save transcription result.")
     return {"id": unique_id, "text": text}
+
+async def get_request_ids():
+    result_dir = Path(Config.RESULT_STORAGE)
+    # 해당 디렉토리에 있는 모든 파일의 경로 조회
+    files = glob.glob(f"{result_dir}/*.json")
+    # 파일 경로에서 파일 이름만 추출
+    file_names = [Path(file).name for file in files]
+    return {"ids":file_names}
