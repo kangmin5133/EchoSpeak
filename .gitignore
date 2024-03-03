@@ -2,3 +2,4 @@ model/pytorch_model.bin
 test
 __pycache__
 .DS_Store
+*.pyc
