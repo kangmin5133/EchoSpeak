@@ -36,9 +36,10 @@ def save_result_as_json(unique_id: str, text: str):
         data = {"id": unique_id, "text": text}
         with open(filename, 'w') as f:
             json.dump(data, f, ensure_ascii=False)
+        logger.info(f"STT result saved \nfile_name : {unique_id}.json \nid : {unique_id}\ntext : {text}")
         return True
     except Exception as e:
-        logger.info(f"Failed to save transcription result from {unique_id}: {e}")
+        logger.error(f"Failed to save transcription result from {unique_id}: {e}")
         return False
 
 async def process_audio_and_get_result(audio_content: bytes):
@@ -55,5 +56,19 @@ async def get_request_ids():
     # 해당 디렉토리에 있는 모든 파일의 경로 조회
     files = glob.glob(f"{result_dir}/*.json")
     # 파일 경로에서 파일 이름만 추출
-    file_names = [Path(file).name for file in files]
+    file_names = [str(Path(file).name).split(".")[0] for file in files]
     return {"ids":file_names}
+
+async def get_result_json(id:str):
+    result_dir = Path(Config.RESULT_STORAGE)
+    # 해당 디렉토리에 있는 모든 파일의 경로 조회
+    files = glob.glob(f"{result_dir}/*.json")
+    # 파일 경로에서 파일 이름만 추출
+    file_names = [str(Path(file).name).split(".")[0] for file in files]
+    if id in file_names:
+        with open(str(result_dir)+"/"+id+".json", 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    else:
+        raise HTTPException(status_code=404, detail=f"result from id ({id}) not found")
+
+    return data

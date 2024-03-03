@@ -17,6 +17,12 @@ async def get_request_ids():
     result = await inference_service.get_request_ids()
     return result
 
+@router.get("/inference/stt/result")
+async def get_result_by_id(id:str):
+    
+    result = await inference_service.get_result_json(id=id)
+    return result
+
 
 @router.post("/inference/stt/transcribe", response_model=Dict[str, str])
 async def transcribe_audio(file: UploadFile = File(...)):
