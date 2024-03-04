@@ -1,4 +1,4 @@
-FROM python:3.11
+FROM python:3.9-slim
 
 RUN apt-get update && \
     apt-get install -y gcc libffi-dev musl-dev && \
@@ -19,4 +19,3 @@ ENV PYTHONPATH "${PYTHONPATH}:/workspace/model"
 RUN python model/melo/init_downloads.py
 
 CMD ["python", "main.py"]
-# CMD ["bash"]
