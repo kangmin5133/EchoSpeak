@@ -1,10 +1,12 @@
 from fastapi import WebSocket, WebSocketDisconnect
-from model.loader import model  # 모델 로드
+from model.loader import STTLoader  # 모델 로드
 import whisper
 import traceback
 import base64
 import numpy as np
 from app.utils.audio_process import process_wav_bytes
+
+STT_MODEL = STTLoader()
 
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
@@ -17,7 +19,7 @@ async def websocket_endpoint(websocket: WebSocket):
             # audio = await process_wav_bytes(bytes(data_bytes))
             waveform = np.frombuffer(data_bytes, np.int16).astype(np.float32) / 32768.0
             audio = whisper.pad_or_trim(waveform).reshape(1, -1)
-            transcription = whisper.transcribe(model, audio)
+            transcription = whisper.transcribe(STT_MODEL.model, audio)
             print("transcription : ",transcription)
             await websocket.send_text(transcription["text"])
     except WebSocketDisconnect:
