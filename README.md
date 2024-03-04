@@ -11,7 +11,7 @@ this project used pre trained korean model from byoussef's whisper-large-v2-ko m
 ## version compatibility
 ```sh
 python 3.10 +
-cuda(11.7) or CPU or mps(m1 or m2)
+cuda(11.7) or CPU
 ```
 
 ## installation
