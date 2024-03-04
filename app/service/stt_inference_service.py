@@ -27,6 +27,7 @@ def transcribe_audio_from_bytes(audio_bytes: bytes):
     transcription = whisper.transcribe(STT_MODEL.model, audio)["text"]
     return transcription
 
+
 def save_result_as_json(unique_id: str, text: str):
     try:
         storage_path = Path(Config.RESULT_STORAGE)

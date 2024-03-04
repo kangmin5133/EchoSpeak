@@ -70,7 +70,7 @@ class TTS(nn.Module):
         return audio_segments
 
     @staticmethod
-    def split_sentences_into_pieces(text, language, quiet=False):
+    def split_sentences_into_pieces(text, language, quiet=True):
         texts = split_sentence(text, language_str=language)
         if not quiet:
             print(" > Text split to sentences.")

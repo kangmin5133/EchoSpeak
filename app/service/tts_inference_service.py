@@ -24,3 +24,4 @@ async def process_text_to_audio(text : str):
     wavfile.write(audio_buffer, rate=TTS_MODEL.sampling_rate, data=audio)
     audio_buffer.seek(0)
     return audio_buffer
+

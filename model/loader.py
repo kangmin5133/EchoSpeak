@@ -1,7 +1,7 @@
 import whisper
 import torch
 from pathlib import Path
-from transformers import AutoProcessor, BarkModel
+# from transformers import AutoProcessor, BarkModel
 from model.melo.api import TTS
 
 STT_MODEL_PATH = Path(__file__).parent / "pytorch_model.bin"
@@ -52,12 +52,13 @@ def load_and_transform_model(model_name='large-v2'):
     model = whisper.load_model(model_name)
     model.load_state_dict(hf_state_dict)
     model.to(device)
-
     return model
 
 class STTLoader:
     def __init__(self):
         self.model = load_and_transform_model()
+        
+
 # bark TTS
 # class TTSLoader:
 #     def __init__(self):
@@ -75,4 +76,3 @@ class TTSLoader:
         self.model = TTS(language='KR', device=self.device)
         self.speaker_ids = self.model.hps.data.spk2id
         self.sampling_rate = self.model.hps.data.sampling_rate
-
