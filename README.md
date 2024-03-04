@@ -41,9 +41,7 @@ pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2
 
 ## requirements
 ```sh
-openai-whisper==20231117
-uvicorn==0.27.1
-fastapi==0.109.2
+pip install -r requirements.txt
 ```
 
 ## download model
