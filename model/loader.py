@@ -1,8 +1,10 @@
 import whisper
 import torch
 from pathlib import Path
+from transformers import AutoProcessor, BarkModel
+from model.melo.api import TTS
 
-MODEL_PATH = Path(__file__).parent / "pytorch_model.bin"
+STT_MODEL_PATH = Path(__file__).parent / "pytorch_model.bin"
 
 def load_and_transform_model(model_name='large-v2'):
     def hf_to_whisper_states(text):
@@ -39,7 +41,7 @@ def load_and_transform_model(model_name='large-v2'):
         device = torch.device('cpu')
 
     # Load HF Model
-    hf_state_dict = torch.load(MODEL_PATH, map_location=device)  # pytorch_model.bin file
+    hf_state_dict = torch.load(STT_MODEL_PATH, map_location=device)  # pytorch_model.bin file
 
     # Rename layers
     for key in list(hf_state_dict.keys()):
@@ -53,4 +55,24 @@ def load_and_transform_model(model_name='large-v2'):
 
     return model
 
-model = load_and_transform_model()
+class STTLoader:
+    def __init__(self):
+        self.model = load_and_transform_model()
+# bark TTS
+# class TTSLoader:
+#     def __init__(self):
+#         self.processor = AutoProcessor.from_pretrained("suno/bark")
+#         self.model = BarkModel.from_pretrained("suno/bark")
+
+# melo TTS
+class TTSLoader:
+    def __init__(self) -> None:
+        self.speed = 1.0
+        if torch.cuda.is_available():
+            self.device = 'cuda:0' 
+        else:
+            self.device = 'cpu' 
+        self.model = TTS(language='KR', device=self.device)
+        self.speaker_ids = self.model.hps.data.spk2id
+        self.sampling_rate = self.model.hps.data.sampling_rate
+
