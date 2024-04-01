@@ -10,7 +10,7 @@ logger = logging.getLogger()
 
 @router.get("/inference/stt/version")
 async def get_version():
-    return {"api_version":Version.echospeak_version,"whisper":Version.whisper_version}
+    return {"api_version":Version.echospeak_version}
 
 @router.get("/inference/stt/search")
 async def get_request_ids():

@@ -19,5 +19,4 @@ class Config(object):
 
 
 class Version(object):
-    whisper_version = "20231117"
-    echospeak_version = "v0.1"
+    echospeak_version = "v0.2"

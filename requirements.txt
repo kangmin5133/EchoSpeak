@@ -1,5 +1,4 @@
 fastapi
-openai-whisper
 uvicorn
 gevent-websocket
 python-multipart
