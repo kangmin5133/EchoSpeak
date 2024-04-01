@@ -51,34 +51,17 @@ pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2
 ```sh
 pip install -r requirements.txt
 ```
-### after install
-The whisper package under the site-package in your conda environment needs a small modification.
-```sh
-$ pip show openai-whisper
-Name: openai-whisper
-Version: 20231117
-Summary: Robust Speech Recognition via Large-Scale Weak Supervision
-Home-page: https://github.com/openai/whisper
-Author: OpenAI
-Author-email:
-License: MIT
-Location: [$your_location]
-Requires: more-itertools, numba, numpy, tiktoken, torch, tqdm
-Required-by: whisper-timestamped
-
-$ vi $your_location/whisper/transcribe.py
-
-line 135 : if type(probs) == list : probs = probs[0]
-line 172 : if type(decode_result) == list: decode_result = decode_result[0]
-```
 
 ### download model
 ```sh
-clone git@github.com:kangmin5133/EcoSpeak.git
-cd model
+cd model/pretrained
+(Ubuntu)
+sudo apt install git-all
+(MacOS)
+brew install git-lfs
+
+git clone https://huggingface.co/byoussef/whisper-large-v2-Ko
 ```
-download `pytorch_model.bin` file from [here](https://huggingface.co/byoussef/whisper-large-v2-Ko/resolve/main/pytorch_model.bin?download=true)
-after download, place model file to `/model` directory
 
 
 ### Run
